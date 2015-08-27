@@ -12,12 +12,15 @@ namespace DatabaseCsvExporter
         [STAThread]
         static void Main()
         {
-            var outputFolder = new DirectoryInfo(@"C:\output\");
+            var databaseName = "yourdatabasenamehere";
+            var outputPath = @"C:\path\to\output\";
+
+            var outputFolder = new DirectoryInfo(outputPath);
             var exporter = new Exporter();
             exporter.OnWarning += (message) => Console.WriteLine(message);
 
             Console.WriteLine("Starting export");
-            exporter.Start("ipsprogressivewa", outputFolder);
+            exporter.Start(databaseName, outputFolder);
             Console.WriteLine("Export complete");
         }
     }
